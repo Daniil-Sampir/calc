@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainCalculator extends CalculatorEngine {
@@ -5,36 +6,56 @@ public class MainCalculator extends CalculatorEngine {
 
 	public static void main(String[] args) {
 		while (true) {
-		double result = 0;
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Enter the first number:");
-		double firstNumber = myCalculator.scannerNumbers();
+			double firstNumber = 0;
+			double secondNumber = 0;
+			double result = 0;
+			Scanner scanner = new Scanner(System.in);
 
-		System.out.println("Enter the operation(+,-,/,*):");
-		String operation = myCalculator.operation();
-
-		System.out.println("Enter the second number:");
-		double secondNumber = myCalculator.scannerNumbers();
-		while (true) {
-			try {
-				result = myCalculator.calcResult(firstNumber, operation, secondNumber);
-				System.out.println("result:" + result);
-			} catch (ArithmeticException e) {
-				System.out.println("Divided by zero operation cannot possible");
-			}
-			break;
-		}
-		System.out.println("Do you want to continue? yes, no");
-		while (true) {
-			String finish = scanner.nextLine();
-			if (finish.equals("yes")) {
+			while (true) {
+				System.out.println("Enter the first number:");
+				try {
+					firstNumber = myCalculator.scannerNumbers();
+				} catch (InputMismatchException e) {
+					System.out.println("Error, invalid input please insert a number");
+					continue;
+				}
 				break;
 			}
-			if (finish.equals("no")) {
-				return;
+
+			System.out.println("Enter the operation(+,-,/,*):");
+			String operation = myCalculator.operation();
+
+			while (true) {
+				System.out.println("Enter the second number:");
+				try {
+					secondNumber = myCalculator.scannerNumbers();
+				} catch (InputMismatchException e) {
+					System.out.println("Error, invalid input please insert a number");
+					continue;
+				}
+				break;
 			}
-			System.out.println("Error, please enter yes or no");
+
+			while (true) {
+				try {
+					result = myCalculator.calcResult(firstNumber, operation, secondNumber);
+					System.out.println("result:" + result);
+				} catch (ArithmeticException e) {
+					System.out.println("Divided by zero operation cannot possible");
+				}
+				break;
+			}
+			System.out.println("Do you want to continue? yes, no");
+			while (true) {
+				String requestContinuation = scanner.nextLine();
+				if (requestContinuation.equals("yes")) {
+					break;
+				}
+				if (requestContinuation.equals("no")) {
+					return;
+				}
+				System.out.println("Error, please enter yes or no");
+			}
 		}
 	}
-}
 }
