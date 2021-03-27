@@ -15,8 +15,8 @@ public class MainCalculator extends CalculatorEngine {
 				System.out.println("Enter the first number:");
 				try {
 					firstNumber = myCalculator.scannerNumbers();
-				} catch (InputMismatchException e) {
-					System.out.println("Error, invalid input please insert a number");
+				} catch (NumberFormatException e) {
+					System.out.println("Error, invalid input lease insert a number");
 					continue;
 				}
 				break;
@@ -29,7 +29,7 @@ public class MainCalculator extends CalculatorEngine {
 				System.out.println("Enter the second number:");
 				try {
 					secondNumber = myCalculator.scannerNumbers();
-				} catch (InputMismatchException e) {
+				} catch (NumberFormatException e) {
 					System.out.println("Error, invalid input please insert a number");
 					continue;
 				}
@@ -40,7 +40,7 @@ public class MainCalculator extends CalculatorEngine {
 				try {
 					result = myCalculator.calcResult(firstNumber, operation, secondNumber);
 					System.out.println("result:" + result);
-				} catch (ArithmeticException e) {
+				} catch (DivideByZeroException e) {
 					System.out.println("Divided by zero operation cannot possible");
 				}
 				break;

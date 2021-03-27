@@ -1,21 +1,21 @@
 import java.util.Scanner;
 
 public class CalculatorEngine {
+	Scanner scannerNumber = new Scanner(System.in);
+	Scanner scannerOperation = new Scanner(System.in);
+	String operation;
+
 	public double scannerNumbers() {
-		Scanner scanner = new Scanner(System.in);
-		double number = 0;
-		return number = scanner.nextDouble();
+		double number = Double.parseDouble(scannerNumber.nextLine());
+		return number;
 	}
 
 	public String operation() {
-		Scanner scanner = new Scanner(System.in);
-		String operation;
 		while (true) {
-			String checkOperation = scanner.nextLine();
+			String checkOperation = scannerOperation.nextLine();
 			boolean isOperationValid = checkValid(checkOperation);
 			if (isOperationValid) {
-				operation = checkOperation;
-				return operation;
+				return operation = checkOperation;
 			} else {
 				System.out.println("Error: unknown operation, enter (+,-,/,*): ");
 			}
@@ -35,7 +35,7 @@ public class CalculatorEngine {
 		}
 	}
 
-	public double calcResult(double firstNumber, String operation, double secondNumber) {
+	public double calcResult(double firstNumber, String operation, double secondNumber) throws DivideByZeroException {
 		double result = 0;
 		if (operation.equals("+")) {
 			result = operatePlus(firstNumber, operation, secondNumber);
@@ -64,9 +64,10 @@ public class CalculatorEngine {
 		return firstNumber * secondNumber;
 	}
 
-	public double operateDevide(double firstNumber, String operation, double secondNumber) {
+	public double operateDevide(double firstNumber, String operation, double secondNumber)
+			throws DivideByZeroException {
 		if (secondNumber == 0) {
-			throw new ArithmeticException("Divided by zero operation cannot possible");
+			throw new DivideByZeroException("Divided by zero operation cannot possible");
 		}
 		return firstNumber / secondNumber;
 	}
