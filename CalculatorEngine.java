@@ -1,18 +1,17 @@
 import java.util.Scanner;
 
 public class CalculatorEngine {
-	Scanner scannerNumber = new Scanner(System.in);
-	Scanner scannerOperation = new Scanner(System.in);
+	Scanner scanner = new Scanner(System.in);
 	String operation;
 
 	public double scannerNumbers() {
-		double number = Double.parseDouble(scannerNumber.nextLine());
+		double number = Double.parseDouble(scanner.nextLine());
 		return number;
 	}
 
 	public String operation() {
 		while (true) {
-			String checkOperation = scannerOperation.nextLine();
+			String checkOperation = scanner.nextLine();
 			boolean isOperationValid = checkValid(checkOperation);
 			if (isOperationValid) {
 				return operation = checkOperation;
