@@ -1,8 +1,8 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class MainCalculator extends CalculatorEngine {
-	static MainCalculator myCalculator = new MainCalculator();
+public class MainCalculator {
+	static CalculatorEngine myCalculator = new CalculatorEngine();
 
 	public static void main(String[] args) {
 		while (true) {
