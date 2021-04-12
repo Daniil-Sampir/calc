@@ -37,34 +37,33 @@ public class CalculatorEngine {
 	public double calcResult(double firstNumber, String operation, double secondNumber) throws DivideByZeroException {
 		double result = 0;
 		if (operation.equals("+")) {
-			result = operatePlus(firstNumber, operation, secondNumber);
+			result = operatePlus(firstNumber, secondNumber);
 		}
 		if (operation.equals("-")) {
-			result = operateMinus(firstNumber, operation, secondNumber);
+			result = operateMinus(firstNumber, secondNumber);
 		}
 		if (operation.equals("*")) {
-			result = operateMultiply(firstNumber, operation, secondNumber);
+			result = operateMultiply(firstNumber, secondNumber);
 		}
 		if (operation.equals("/")) {
-			result = operateDevide(firstNumber, operation, secondNumber);
+			result = operateDevide(firstNumber, secondNumber);
 		}
 		return result;
 	}
 
-	public double operatePlus(double firstNumber, String operation, double secondNumber) {
+	public double operatePlus(double firstNumber, double secondNumber) {
 		return firstNumber + secondNumber;
 	}
 
-	public double operateMinus(double firstNumber, String operation, double secondNumber) {
+	public double operateMinus(double firstNumber, double secondNumber) {
 		return firstNumber - secondNumber;
 	}
 
-	public double operateMultiply(double firstNumber, String operation, double secondNumber) {
+	public double operateMultiply(double firstNumber, double secondNumber) {
 		return firstNumber * secondNumber;
 	}
 
-	public double operateDevide(double firstNumber, String operation, double secondNumber)
-			throws DivideByZeroException {
+	public double operateDevide(double firstNumber, double secondNumber) throws DivideByZeroException {
 		if (secondNumber == 0) {
 			throw new DivideByZeroException("Divided by zero operation cannot possible");
 		}
