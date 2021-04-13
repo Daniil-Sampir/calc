@@ -2,6 +2,6 @@
 *.txt
 *.classpath
 *.log
-com.calculator.junit.first/settings
-com.calculator.junit.first/target
+settings
+target
 *.project
