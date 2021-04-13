@@ -2,3 +2,6 @@
 *.txt
 *.classpath
 *.log
+/settings
+/target
+*.project
