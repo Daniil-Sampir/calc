@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainCalculator {
-	static calculatorEngine myCalculator = new calculatorEngine();
+	static CalculatorEngine myCalculator = new CalculatorEngine();
 
 	public static void main(String[] args) {
 		while (true) {
@@ -46,17 +46,6 @@ public class MainCalculator {
 					System.out.println("Divided by zero operation cannot possible");
 				}
 				break;
-			}
-			System.out.println("Do you want to continue? yes, no");
-			while (true) {
-				String requestContinuation = scanner.nextLine();
-				if (requestContinuation.equals("yes")) {
-					break;
-				}
-				if (requestContinuation.equals("no")) {
-					return;
-				}
-				System.out.println("Error, please enter yes or no");
 			}
 		}
 	}

@@ -3,15 +3,13 @@ package com.calculator.junit.first;
 import java.io.InputStream;
 import java.util.Scanner;
 
-public class calculatorEngine {
+public class CalculatorEngine {
 
 	Scanner scanner = new Scanner(System.in);
 	String operation;
 
 	public double scannerNumbers() {
-		Readable inputStream = null;
-		Scanner testScanner = new Scanner(inputStream);
-		double number = Double.parseDouble(testScanner.nextLine());
+		double number = Double.parseDouble(scanner.nextLine());
 		return number;
 	}
 

@@ -6,6 +6,8 @@ import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -14,15 +16,17 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class calculatorEngineTest {
-	calculatorEngine myCalc = new calculatorEngine();
+public class CalculatorEngineTest {
+	CalculatorEngine myCalc;
 
 	@Before
 	public void setUp() throws Exception {
+		myCalc = new CalculatorEngine();
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		myCalc = null;
 	}
 
 	@Test
@@ -94,14 +98,14 @@ public class calculatorEngineTest {
 	@Test
 	public void testCheckValidTrue() {
 		String testParameter = "+";
-		boolean isValidOperation = calculatorEngine.checkValid(testParameter);
+		boolean isValidOperation = CalculatorEngine.checkValid(testParameter);
 		Assert.assertTrue(isValidOperation);
 	}
 
 	@Test
 	public void testCheckValidFalse() {
 		String testParameter = "qwe";
-		boolean isValidOperation = calculatorEngine.checkValid(testParameter);
+		boolean isValidOperation = CalculatorEngine.checkValid(testParameter);
 		Assert.assertTrue(isValidOperation == false);
 	}
 }
