@@ -1,4 +1,4 @@
-package com.calculator.junit.first;
+package com.calculator.junit.first.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -7,17 +7,34 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.Scanner;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.calculator.junit.first.CalculatorEngine;
+import com.calculator.junit.first.DivideByZeroException;
+
 public class CalculatorEngineTest {
 	CalculatorEngine myCalc;
+
+	public static void main(String[] args) throws IOException {
+	}
 
 	@Before
 	public void setUp() throws Exception {
@@ -33,6 +50,50 @@ public class CalculatorEngineTest {
 	public void testOperationPlus() {
 		double result = myCalc.operatePlus(10.0, 10.0);
 		assertEquals(20.0, result, 0);
+	}
+
+	@Test
+	public void testRandomNumbers() throws IOException {
+		FileInputStream file = new FileInputStream("C:\\Users\\Danik\\eclipse-workspace\\RandomNumbers.xlsx");
+		Workbook wb = new XSSFWorkbook(file);
+		ArrayList firstNumberList = new ArrayList();
+		ArrayList secondNumberList = new ArrayList();
+		ArrayList listResult = new ArrayList();
+
+		double number = 0;
+
+		Sheet sheet = wb.getSheetAt(0);
+		Iterator<Row> it = sheet.iterator();
+		while (it.hasNext()) {
+			Row row = it.next();
+			Iterator<Cell> cells = row.iterator();
+			while (cells.hasNext()) {
+				Cell cell = cells.next();
+				int columnIndex = cell.getColumnIndex();
+				if (columnIndex != 0 && columnIndex != 1 && columnIndex != 2) {
+					continue;
+				}
+				number = cell.getNumericCellValue();
+				if (columnIndex == 0) {
+					firstNumberList.add(number);
+				}
+				if (columnIndex == 1) {
+					secondNumberList.add(number);
+				}
+				if (columnIndex == 2) {
+					listResult.add(number);
+				}
+			}
+		}
+
+		for (int i = 0; i < 5; i++) {
+			double number1 = (Double) firstNumberList.get(i);
+			double number2 = (Double) secondNumberList.get(i);
+			double actualResult = (Double) listResult.get(i);
+			double result = number1 + number2;
+			assertEquals(actualResult, result, 0);
+		}
+		file.close();
 	}
 
 	@Test
@@ -108,4 +169,5 @@ public class CalculatorEngineTest {
 		boolean isValidOperation = CalculatorEngine.checkValid(testParameter);
 		Assert.assertTrue(isValidOperation == false);
 	}
+
 }
