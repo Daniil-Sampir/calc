@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainCalculator {
-	static CalculatorEngine myCalculator = new CalculatorEngine();
+	static ÑalculatorEngine myCalculator = new ÑalculatorEngine();
 
 	public static void main(String[] args) {
 		while (true) {

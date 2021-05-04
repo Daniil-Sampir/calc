@@ -3,7 +3,7 @@ package com.calculator.junit.first;
 import java.io.InputStream;
 import java.util.Scanner;
 
-public class CalculatorEngine {
+public class ÑalculatorEngine {
 
 	Scanner scanner = new Scanner(System.in);
 	String operation;
