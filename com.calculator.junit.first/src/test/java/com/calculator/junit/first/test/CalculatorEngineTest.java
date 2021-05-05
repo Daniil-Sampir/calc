@@ -26,18 +26,18 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.calculator.junit.first.ÑalculatorEngine;
+import com.calculator.junit.first.CalculatorEngine;
 import com.calculator.junit.first.DivideByZeroException;
 
 public class CalculatorEngineTest {
-	ÑalculatorEngine myCalc;
+	CalculatorEngine myCalc;
 
 	public static void main(String[] args) throws IOException {
 	}
 
 	@Before
 	public void setUp() throws Exception {
-		myCalc = new ÑalculatorEngine();
+		myCalc = new CalculatorEngine();
 	}
 
 	@After
@@ -158,14 +158,14 @@ public class CalculatorEngineTest {
 	@Test
 	public void testCheckValidTrue() {
 		String testParameter = "+";
-		boolean isValidOperation = ÑalculatorEngine.checkValid(testParameter);
+		boolean isValidOperation = CalculatorEngine.checkValid(testParameter);
 		Assert.assertTrue(isValidOperation);
 	}
 
 	@Test
 	public void testCheckValidFalse() {
 		String testParameter = "qwe";
-		boolean isValidOperation = ÑalculatorEngine.checkValid(testParameter);
+		boolean isValidOperation = CalculatorEngine.checkValid(testParameter);
 		Assert.assertTrue(isValidOperation == false);
 	}
 
