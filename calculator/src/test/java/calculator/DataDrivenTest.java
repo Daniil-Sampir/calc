@@ -9,29 +9,27 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+@RunWith(value = Parameterized.class)
 public class DataDrivenTest {
+	CalculatorEngine myCalc = new CalculatorEngine();
+	int firstNumber;
+	int secondNumber;
+	int result;
 
-	@RunWith(value = Parameterized.class)
-	public static class ParameterizeTest {
-		CalculatorEngine myCalc = new CalculatorEngine();
-		int firstNumber;
-		int secondNumber;
-		int result;
+	public DataDrivenTest(int firstNumber, int secondNumber, int result) {
+		this.firstNumber = firstNumber;
+		this.secondNumber = secondNumber;
+		this.result = result;
+	}
 
-		public ParameterizeTest(int firstNumber, int secondNumber, int result) {
-			this.firstNumber = firstNumber;
-			this.secondNumber = secondNumber;
-			this.result = result;
-		}
+	@Parameterized.Parameters
+	public static Collection<Object[]> dataForTest() {
+		Object[][] data = new Object[][] { { 1, 23, 24 }, { 2, 12, 14 }, { 3, 43, 46 }, { 4, 4, 8 } };
+		return Arrays.asList(data);
+	}
 
-		@Parameterized.Parameters
-		public static Collection<Object[]> dataForTest() {
-			Object[][] data = new Object[][] { { 1, 23, 24 }, { 2, 12, 14 }, { 3, 43, 46 }, { 4, 4, 8 } };
-			return Arrays.asList(data);
-		}
-		@Test
-		public void dataDrivenTest() {
-			assertEquals(result, myCalc.operatePlus(firstNumber, secondNumber), 0);
-		}
+	@Test
+	public void dataDrivenTest() {
+		assertEquals(result, myCalc.operatePlus(firstNumber, secondNumber), 0);
 	}
 }
