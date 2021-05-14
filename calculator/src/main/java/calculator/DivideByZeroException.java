@@ -1,4 +1,4 @@
-package com.calculator.junit.first;
+package calculator;
 
 public class DivideByZeroException extends Exception {
 
