@@ -10,5 +10,5 @@
 
 [Data Driven Test](https://github.com/Daniil-Sampir/calc/blob/feature/calculator/src/test/java/calculator/DataDrivenTest.java)
 # Testing from the console
-1. In the console, go to `com.calculator.junit.first`
-2. Introduce `mvn test -DtestGroup=come/calculator/junit/first/test`
+1. In the console, go to `calculator`
+2. Enter `mvn clean test`
