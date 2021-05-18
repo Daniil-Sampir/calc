@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 
+import javax.naming.OperationNotSupportedException;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -27,81 +29,81 @@ public class CalculatorEngineTest {
 
 	@Test
 	public void testOperationPlus() {
-		double result = myCalc.operatePlus(10.0, 10.0);
+		double result = myCalc.plus(10.0, 10.0);
 		assertEquals(20.0, result, 0);
 	}
 
 	@Test
 	public void testOperationMinus() {
-		double result = myCalc.operateMinus(10.0, 10.0);
+		double result = myCalc.minus(10.0, 10.0);
 		assertEquals(0.0, result, 0);
 	}
 
 	@Test
 	public void testOperationMultiply() {
-		double result = myCalc.operateMultiply(10.0, 10.0);
+		double result = myCalc.multiply(10.0, 10.0);
 		assertEquals(100.0, result, 0);
 	}
 
 	@Test
 	public void testOperationDevide() throws DivideByZeroException {
-		double result = myCalc.operateDevide(10.0, 10.0);
+		double result = myCalc.devide(10.0, 10.0);
 		assertEquals(1.0, result, 0);
 	}
 
 	@Test(expected = DivideByZeroException.class)
 	public void testDevideByZeroException() throws DivideByZeroException {
-		double result = myCalc.operateDevide(10.0, 0.0);
-		assertEquals(0.0, result, 0);
+		myCalc.devide(10.0, 0.0);
 	}
 
 	@Test
-	public void testCalcResultPlus() throws DivideByZeroException {
-		String testPlus = "+";
+	public void testCalcResultPlus() throws DivideByZeroException, OperationNotSupportedException {
 		double firstNumber = 4;
 		double secondNumber = 9;
-		double result = myCalc.calcResult(firstNumber, testPlus, secondNumber);
+		double result = myCalc.result(firstNumber, Operation.PLUS, secondNumber);
 		Assert.assertEquals(13.0, result, 0);
 	}
 
 	@Test
-	public void testCalcResultMinus() throws DivideByZeroException {
-		String testMinus = "-";
+	public void testCalcResultMinus() throws DivideByZeroException, OperationNotSupportedException {
 		double firstNumber = 4;
 		double secondNumber = 9;
-		double result = myCalc.calcResult(firstNumber, testMinus, secondNumber);
+		double result = myCalc.result(firstNumber, Operation.MINUS, secondNumber);
 		Assert.assertEquals(-5.0, result, 0);
 	}
 
 	@Test
-	public void testCalcResultMultiply() throws DivideByZeroException {
-		String testMultiply = "*";
+	public void testCalcResultMultiply() throws DivideByZeroException, OperationNotSupportedException {
 		double firstNumber = 4;
 		double secondNumber = 9;
-		double result = myCalc.calcResult(firstNumber, testMultiply, secondNumber);
+		double result = myCalc.result(firstNumber, Operation.MULTIPLY, secondNumber);
 		Assert.assertEquals(36.0, result, 0);
 	}
 
+	@Test(expected = OperationNotSupportedException.class)
+	public void testCalcResultUnknown() throws DivideByZeroException, OperationNotSupportedException {
+		double firstNumber = 4;
+		double secondNumber = 9;
+		myCalc.result(firstNumber, Operation.UNKNOWN, secondNumber);
+	}
+
 	@Test
-	public void testCalcResultDevide() throws DivideByZeroException {
-		String testDevide = "/";
+	public void testCalcResultDevide() throws DivideByZeroException, OperationNotSupportedException {
 		double firstNumber = 8;
 		double secondNumber = 2;
-		double result = myCalc.calcResult(firstNumber, testDevide, secondNumber);
+		double result = myCalc.result(firstNumber, Operation.DEVIDE, secondNumber);
 		Assert.assertEquals(4.0, result, 0);
 	}
 
 	@Test
 	public void testCheckValidTrue() {
-		String testParameter = "+";
-		boolean isValidOperation = CalculatorEngine.checkValid(testParameter);
+		boolean isValidOperation = CalculatorEngine.checkValid(Operation.PLUS);
 		Assert.assertTrue(isValidOperation);
 	}
 
 	@Test
 	public void testCheckValidFalse() {
-		String testParameter = "qwe";
-		boolean isValidOperation = CalculatorEngine.checkValid(testParameter);
+		boolean isValidOperation = CalculatorEngine.checkValid(Operation.UNKNOWN);
 		Assert.assertTrue(isValidOperation == false);
 	}
 }

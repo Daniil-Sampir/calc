@@ -23,13 +23,13 @@ public class DataDrivenTest {
 	}
 
 	@Parameterized.Parameters
-	public static Collection<Object[]> dataForTest() {
+	public static Collection<Object[]> dataForTestPlus() {
 		Object[][] data = new Object[][] { { 1, 23, 24 }, { 2, 12, 14 }, { 3, 43, 46 }, { 4, 4, 8 } };
 		return Arrays.asList(data);
 	}
 
 	@Test
-	public void dataDrivenTest() {
-		assertEquals(result, myCalc.operatePlus(firstNumber, secondNumber), 0);
+	public void drivenTestPlus() {
+		assertEquals(result, myCalc.plus(firstNumber, secondNumber), 0);
 	}
 }

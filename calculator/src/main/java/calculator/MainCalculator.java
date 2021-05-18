@@ -2,6 +2,7 @@ package calculator;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import javax.naming.OperationNotSupportedException;
 
 public class MainCalculator {
 	static CalculatorEngine myCalculator = new CalculatorEngine();
@@ -25,7 +26,7 @@ public class MainCalculator {
 			}
 
 			System.out.println("Enter the operation(+,-,/,*):");
-			String operation = myCalculator.operation();
+			Operation operation = myCalculator.operation();
 
 			while (true) {
 				System.out.println("Enter the second number:");
@@ -40,10 +41,11 @@ public class MainCalculator {
 
 			while (true) {
 				try {
-					result = myCalculator.calcResult(firstNumber, operation, secondNumber);
+					result = myCalculator.result(firstNumber, operation, secondNumber);
 					System.out.println("result:" + result);
 				} catch (DivideByZeroException e) {
 					System.out.println("Divided by zero operation cannot possible");
+				} catch (OperationNotSupportedException e) {
 				}
 				break;
 			}

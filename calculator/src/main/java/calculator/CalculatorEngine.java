@@ -3,71 +3,88 @@ package calculator;
 import java.io.InputStream;
 import java.util.Scanner;
 
+import javax.naming.OperationNotSupportedException;
+
+enum Operation {
+	MINUS, PLUS, DEVIDE, MULTIPLY, UNKNOWN
+}
+
 public class CalculatorEngine {
 
 	Scanner scanner = new Scanner(System.in);
-	String operation;
 
 	public double scannerNumbers() {
 		double number = Double.parseDouble(scanner.nextLine());
 		return number;
 	}
 
-	public String operation() {
+	public Operation operation() {
 		while (true) {
 			String checkOperation = scanner.nextLine();
-			boolean isOperationValid = checkValid(checkOperation);
+			Operation operation = operationTest(checkOperation);
+			boolean isOperationValid = checkValid(operation);
 			if (isOperationValid) {
-				return operation = checkOperation;
+				return operation;
 			} else {
 				System.out.println("Error: unknown operation, enter (+,-,/,*): ");
 			}
 		}
 	}
 
-	public static Boolean checkValid(String unit) {
-		String operateMinus = "-";
-		String operatePlus = "+";
-		String operateDevide = "/";
-		String operateMultiply = "*";
-		if (unit.equals(operateMinus) || unit.equals(operatePlus) || unit.equals(operateMultiply)
-				|| unit.equals(operateDevide)) {
-			return true;
-		} else {
+	public static Operation operationTest(String string) {
+		if (string.equals("+")) {
+			return Operation.PLUS;
+		}
+		if (string.equals("-")) {
+			return Operation.MINUS;
+		}
+		if (string.equals("*")) {
+			return Operation.MULTIPLY;
+		}
+		if (string.equals("/")) {
+			return Operation.DEVIDE;
+		}
+		return Operation.UNKNOWN;
+	}
+
+	public static Boolean checkValid(Operation unit) {
+		if (unit.equals(Operation.UNKNOWN)) {
 			return false;
+		} else {
+			return true;
 		}
 	}
 
-	public double calcResult(double firstNumber, String operation, double secondNumber) throws DivideByZeroException {
-		double result = 0;
-		if (operation.equals("+")) {
-			result = operatePlus(firstNumber, secondNumber);
+	public double result(double firstNumber, Operation operation, double secondNumber)
+			throws DivideByZeroException, OperationNotSupportedException {
+		switch (operation) {
+		case DEVIDE:
+			return devide(firstNumber, secondNumber);
+		case MINUS:
+			return minus(firstNumber, secondNumber);
+		case MULTIPLY:
+			return multiply(firstNumber, secondNumber);
+		case PLUS:
+			return plus(firstNumber, secondNumber);
+		case UNKNOWN:
+		default:
+			throw new OperationNotSupportedException("");
 		}
-		if (operation.equals("-")) {
-			result = operateMinus(firstNumber, secondNumber);
-		}
-		if (operation.equals("*")) {
-			result = operateMultiply(firstNumber, secondNumber);
-		}
-		if (operation.equals("/")) {
-			result = operateDevide(firstNumber, secondNumber);
-		}
-		return result;
 	}
 
-	public double operatePlus(double firstNumber, double secondNumber) {
+	public double plus(double firstNumber, double secondNumber) {
 		return firstNumber + secondNumber;
 	}
 
-	public double operateMinus(double firstNumber, double secondNumber) {
+	public double minus(double firstNumber, double secondNumber) {
 		return firstNumber - secondNumber;
 	}
 
-	public double operateMultiply(double firstNumber, double secondNumber) {
+	public double multiply(double firstNumber, double secondNumber) {
 		return firstNumber * secondNumber;
 	}
 
-	public double operateDevide(double firstNumber, double secondNumber) throws DivideByZeroException {
+	public double devide(double firstNumber, double secondNumber) throws DivideByZeroException {
 		if (secondNumber == 0) {
 			throw new DivideByZeroException("Divided by zero operation cannot possible");
 		}
