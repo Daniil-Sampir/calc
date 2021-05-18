@@ -97,13 +97,13 @@ public class CalculatorEngineTest {
 
 	@Test
 	public void testCheckValidTrue() {
-		boolean isValidOperation = CalculatorEngine.checkValid(Operation.PLUS);
+		boolean isValidOperation = CalculatorEngine.isOperationValid(Operation.PLUS);
 		Assert.assertTrue(isValidOperation);
 	}
 
 	@Test
 	public void testCheckValidFalse() {
-		boolean isValidOperation = CalculatorEngine.checkValid(Operation.UNKNOWN);
+		boolean isValidOperation = CalculatorEngine.isOperationValid(Operation.UNKNOWN);
 		Assert.assertTrue(isValidOperation == false);
 	}
 }

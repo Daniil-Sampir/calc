@@ -10,26 +10,26 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(value = Parameterized.class)
-public class DataDrivenTest {
+public class MinusDrivenTest {
 	CalculatorEngine myCalc = new CalculatorEngine();
 	int firstNumber;
 	int secondNumber;
 	int result;
 
-	public DataDrivenTest(int firstNumber, int secondNumber, int result) {
+	public MinusDrivenTest(int firstNumber, int secondNumber, int result) {
 		this.firstNumber = firstNumber;
 		this.secondNumber = secondNumber;
 		this.result = result;
 	}
 
 	@Parameterized.Parameters
-	public static Collection<Object[]> dataForTestPlus() {
-		Object[][] data = new Object[][] { { 1, 23, 24 }, { 2, 12, 14 }, { 3, 43, 46 }, { 4, 4, 8 } };
+	public static Collection<Object[]> dataForTestMinus() {
+		Object[][] data = new Object[][] { { 23, 1, 22 }, { 12, 2, 10 }, { 43, 3, 40 }, { 4, 4, 0 } };
 		return Arrays.asList(data);
 	}
 
 	@Test
-	public void drivenTestPlus() {
-		assertEquals(result, myCalc.plus(firstNumber, secondNumber), 0);
+	public void drivenTestMinus() {
+		assertEquals(result, myCalc.minus(firstNumber, secondNumber), 0);
 	}
 }

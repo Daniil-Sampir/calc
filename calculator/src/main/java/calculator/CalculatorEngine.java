@@ -22,7 +22,7 @@ public class CalculatorEngine {
 		while (true) {
 			String checkOperation = scanner.nextLine();
 			Operation operation = operationTest(checkOperation);
-			boolean isOperationValid = checkValid(operation);
+			boolean isOperationValid = isOperationValid(operation);
 			if (isOperationValid) {
 				return operation;
 			} else {
@@ -47,7 +47,7 @@ public class CalculatorEngine {
 		return Operation.UNKNOWN;
 	}
 
-	public static Boolean checkValid(Operation unit) {
+	public static Boolean isOperationValid(Operation unit) {
 		if (unit.equals(Operation.UNKNOWN)) {
 			return false;
 		} else {
