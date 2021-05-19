@@ -1,6 +1,5 @@
 package calculator;
 
-import java.io.InputStream;
 import java.util.Scanner;
 
 import javax.naming.OperationNotSupportedException;

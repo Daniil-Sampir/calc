@@ -10,8 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(value = Parameterized.class)
-public class DevideDrivenTest {
-	CalculatorEngine myCalc = new CalculatorEngine();
+public class DevideDrivenTest extends BaseCalcEngineTest {
 	double firstNumber;
 	double secondNumber;
 	double result;

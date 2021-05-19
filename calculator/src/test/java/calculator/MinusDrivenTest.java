@@ -10,11 +10,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(value = Parameterized.class)
-public class MinusDrivenTest {
-	CalculatorEngine myCalc = new CalculatorEngine();
-	int firstNumber;
-	int secondNumber;
-	int result;
+public class MinusDrivenTest extends BaseCalcEngineTest {
+	double firstNumber;
+	double secondNumber;
+	double result;
 
 	public MinusDrivenTest(int firstNumber, int secondNumber, int result) {
 		this.firstNumber = firstNumber;
