@@ -67,7 +67,7 @@ public class CalculatorEngine {
 			return plus(firstNumber, secondNumber);
 		case UNKNOWN:
 		default:
-			throw new OperationNotSupportedException("");
+			throw new OperationNotSupportedException();
 		}
 	}
 

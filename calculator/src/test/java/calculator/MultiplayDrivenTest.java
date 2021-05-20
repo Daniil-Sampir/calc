@@ -28,7 +28,7 @@ public class MultiplayDrivenTest extends BaseCalcEngineTest {
 	}
 
 	@Test
-	public void drivenTestMultiplay() {
+	public void testMultiplay() {
 		assertEquals(result, myCalc.multiply(firstNumber, secondNumber), 0);
 	}
 }

@@ -28,7 +28,7 @@ public class PlusDrivenTest extends BaseCalcEngineTest {
 	}
 
 	@Test
-	public void drivenTestPlus() {
+	public void testPlus() {
 		assertEquals(result, myCalc.plus(firstNumber, secondNumber), 0);
 	}
 }

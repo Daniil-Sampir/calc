@@ -7,7 +7,7 @@ import org.junit.Test;
 public class CalculatorEngineTest extends BaseCalcEngineTest {
 
 	@Test
-	public void testCalcResultPlus() throws DivideByZeroException, OperationNotSupportedException {
+	public void testResultPlus() throws DivideByZeroException, OperationNotSupportedException {
 		double firstNumber = 4;
 		double secondNumber = 9;
 		double result = myCalc.result(firstNumber, Operation.PLUS, secondNumber);
@@ -15,7 +15,7 @@ public class CalculatorEngineTest extends BaseCalcEngineTest {
 	}
 
 	@Test
-	public void testCalcResultMinus() throws DivideByZeroException, OperationNotSupportedException {
+	public void testResultMinus() throws DivideByZeroException, OperationNotSupportedException {
 		double firstNumber = 4;
 		double secondNumber = 9;
 		double result = myCalc.result(firstNumber, Operation.MINUS, secondNumber);
@@ -23,7 +23,7 @@ public class CalculatorEngineTest extends BaseCalcEngineTest {
 	}
 
 	@Test
-	public void testCalcResultMultiply() throws DivideByZeroException, OperationNotSupportedException {
+	public void testResultMultiply() throws DivideByZeroException, OperationNotSupportedException {
 		double firstNumber = 4;
 		double secondNumber = 9;
 		double result = myCalc.result(firstNumber, Operation.MULTIPLY, secondNumber);
@@ -31,7 +31,7 @@ public class CalculatorEngineTest extends BaseCalcEngineTest {
 	}
 
 	@Test
-	public void testCalcResultDevide() throws DivideByZeroException, OperationNotSupportedException {
+	public void testResultDevide() throws DivideByZeroException, OperationNotSupportedException {
 		double firstNumber = 8;
 		double secondNumber = 2;
 		double result = myCalc.result(firstNumber, Operation.DEVIDE, secondNumber);
@@ -39,7 +39,7 @@ public class CalculatorEngineTest extends BaseCalcEngineTest {
 	}
 
 	@Test(expected = OperationNotSupportedException.class)
-	public void testCalcResultUnknown() throws DivideByZeroException, OperationNotSupportedException {
+	public void testResultUnknown() throws DivideByZeroException, OperationNotSupportedException {
 		double firstNumber = 4;
 		double secondNumber = 9;
 		myCalc.result(firstNumber, Operation.UNKNOWN, secondNumber);

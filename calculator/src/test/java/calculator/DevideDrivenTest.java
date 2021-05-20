@@ -28,7 +28,7 @@ public class DevideDrivenTest extends BaseCalcEngineTest {
 	}
 
 	@Test
-	public void drivenTestDevide() throws DivideByZeroException {
+	public void testDevide() throws DivideByZeroException {
 		assertEquals(result, myCalc.devide(firstNumber, secondNumber), 0);
 	}
 }

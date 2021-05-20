@@ -28,7 +28,7 @@ public class MinusDrivenTest extends BaseCalcEngineTest {
 	}
 
 	@Test
-	public void drivenTestMinus() {
+	public void testMinus() {
 		assertEquals(result, myCalc.minus(firstNumber, secondNumber), 0);
 	}
 }

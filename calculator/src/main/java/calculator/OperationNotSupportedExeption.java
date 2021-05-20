@@ -1,7 +1,8 @@
 package calculator;
 
 public class OperationNotSupportedExeption extends Exception {
-	public OperationNotSupportedExeption(String massage) {
-		super(massage);
+
+	public OperationNotSupportedExeption(String message) {
+		super(message);
 	}
 }
