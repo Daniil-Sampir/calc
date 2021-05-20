@@ -52,13 +52,11 @@ public class CalculatorEngineTest extends BaseCalcEngineTest {
 
 	@Test
 	public void testCheckValidTrue() {
-		boolean isValidOperation = CalculatorEngine.isOperationValid(Operation.PLUS);
-		Assert.assertTrue(isValidOperation);
+		Assert.assertTrue(myCalc.isOperationValid(Operation.PLUS));
 	}
 
 	@Test
 	public void testCheckValidFalse() {
-		boolean isValidOperation = CalculatorEngine.isOperationValid(Operation.UNKNOWN);
-		Assert.assertFalse(isValidOperation);
+		Assert.assertFalse(myCalc.isOperationValid(Operation.UNKNOWN));
 	}
 }
